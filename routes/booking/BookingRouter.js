@@ -24,6 +24,7 @@ bookingRouter.post("/booking", authVerify, async (req, res) => {
 
         const booking = new Booking({
             space_id: parkSpace._id,
+            space_name: parkSpaceName,
             user_id: user._id,
             check_in: req.body.check_in,
             check_out: req.body.check_out,
@@ -48,11 +49,7 @@ bookingRouter.post("/booking", authVerify, async (req, res) => {
         const checkInTime = moment(req.body.check_in).format(DATE_FORMAT)
         const checkOutTime = moment(req.body.check_out).format(DATE_FORMAT)
         sendBookingNotificationEmail({
-            username,
-            checkInTime,
-            checkOutTime,
-            parkSpaceName,
-            email
+            username, checkInTime, checkOutTime, parkSpaceName, email
         })
 
         res.status(200).send("Booking successful")
@@ -75,9 +72,9 @@ bookingRouter.post("/cancel-booking", async (req, res) => {
     }
 })
 
-bookingRouter.post("/user-bookings", authVerify, async (req, res) => {
+bookingRouter.post("/get-user-bookings", authVerify, async (req, res) => {
     try {
-        const userBookings = await Booking.find({user_id: req.body.user_id});
+        const userBookings = await Booking.find({user_id: req.userId});
 
         let pendingBookings = userBookings.filter(booking => booking.booking_status === BOOKING_STATUS.PENDING);
         let activeBookings = userBookings.filter(booking => booking.booking_status === BOOKING_STATUS.ACTIVE);
