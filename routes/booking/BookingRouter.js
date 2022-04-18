@@ -77,7 +77,7 @@ bookingRouter.post("/cancel-booking", async (req, res) => {
 
 bookingRouter.post("/get-user-bookings", authVerify, async (req, res) => {
     try {
-        const userBookings = await Booking.find({user_id: req.body.user_id});
+        const userBookings = await Booking.find({user_id: req.userId});
 
         let pendingBookings = userBookings.filter(booking => booking.booking_status === BOOKING_STATUS.PENDING);
         let activeBookings = userBookings.filter(booking => booking.booking_status === BOOKING_STATUS.ACTIVE);
