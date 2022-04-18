@@ -24,6 +24,7 @@ bookingRouter.post("/booking", authVerify, async (req, res) => {
 
         const booking = new Booking({
             space_id: parkSpace._id,
+            space_name: parkSpaceName,
             user_id: user._id,
             check_in: req.body.check_in,
             check_out: req.body.check_out,
@@ -48,11 +49,7 @@ bookingRouter.post("/booking", authVerify, async (req, res) => {
         const checkInTime = moment(req.body.check_in).format(DATE_FORMAT)
         const checkOutTime = moment(req.body.check_out).format(DATE_FORMAT)
         sendBookingNotificationEmail({
-            username,
-            checkInTime,
-            checkOutTime,
-            parkSpaceName,
-            email
+            username, checkInTime, checkOutTime, parkSpaceName, email
         })
 
         res.status(200).send("Booking successful")
