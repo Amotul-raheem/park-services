@@ -6,7 +6,7 @@ const authVerify = function (req, res, next) {
 
     try {
         req.userId = jwt.verify(token, process.env.TOKEN_STRING);
-        console.log("User verified")
+        // console.log("User verified")
         next();
     } catch (error) {
         res.status(400).send("Invalid token")

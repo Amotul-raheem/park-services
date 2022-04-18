@@ -75,7 +75,7 @@ bookingRouter.post("/cancel-booking", async (req, res) => {
     }
 })
 
-bookingRouter.post("/user-bookings", authVerify, async (req, res) => {
+bookingRouter.post("/get-user-bookings", authVerify, async (req, res) => {
     try {
         const userBookings = await Booking.find({user_id: req.body.user_id});
 
