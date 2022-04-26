@@ -26,6 +26,7 @@ authenticationRouter.post("/sign-up", async (req, res) => {
         }
         const email = req.body.email;
         const username = req.body.username;
+
         const emailExist = await User.findOne({email: email});
         if (emailExist) {
             res.status(400).send("Email already exists.");
@@ -37,8 +38,10 @@ authenticationRouter.post("/sign-up", async (req, res) => {
         const verificationToken = uuidv4();
 
         const user = new User({
-            username: username,
-            email: email,
+            user_profile:{
+                username: username,
+                email: email,
+            },
             password: hashedPassword,
             verification_token: verificationToken,
             verification_token_creation_date: Date.now()

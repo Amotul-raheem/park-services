@@ -43,8 +43,8 @@ bookingRouter.post("/booking", authVerify, async (req, res) => {
         user.security_code = req.body.security_code
         await user.save()
 
-        const username = user.username
-        const email = user.email
+        const username = user.user_profile.username
+        const email = user.user_profile.email
 
         const checkInTime = moment(req.body.check_in).format(DATE_FORMAT)
         const checkOutTime = moment(req.body.check_out).format(DATE_FORMAT)
