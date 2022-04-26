@@ -7,6 +7,7 @@ import {authenticationRouter} from "./routes/authentication/AuthenticationRouter
 import {passwordRouter} from "./routes/authentication/PasswordRouter.js";
 import {bookingRouter} from "./routes/booking/BookingRouter.js";
 import parkSpotsRouter from "./routes/booking/ParkSpotsRouter.js";
+import {userProfileRouter} from "./routes/profile/UserProfileRouter.js";
 
 mongodbConnection()
 
@@ -25,6 +26,9 @@ app.use("/api", passwordRouter)
 //Booking
 app.use("/api", bookingRouter);
 app.use("/api", parkSpotsRouter);
+
+//User Profile
+app.use("/api", userProfileRouter)
 
 app.listen(PORT, () => {
     console.log(`server is running on port ${PORT}`)
