@@ -1,10 +1,8 @@
 import express from "express"
-import dotenv from "dotenv";
 import User from "../../models/User.js";
 import authVerify from "../../middleware/AuthVerify.js";
 
 const userProfileRouter = express.Router();
-dotenv.config()
 
 userProfileRouter.get("/get-user-profile", authVerify, async (req, res) => {
     try {
