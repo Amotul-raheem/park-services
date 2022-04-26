@@ -38,10 +38,8 @@ authenticationRouter.post("/sign-up", async (req, res) => {
         const verificationToken = uuidv4();
 
         const user = new User({
-            user_profile:{
-                username: username,
-                email: email,
-            },
+            username: username,
+            email: email,
             password: hashedPassword,
             verification_token: verificationToken,
             verification_token_creation_date: Date.now()

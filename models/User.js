@@ -3,27 +3,25 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    user_profile: {
-        username: {
-            type: String,
-            required: true
-        },
-        first_name: {
-            type: String,
-        },
-        last_name: {
-            type: String,
-        },
-        gender: {
-            type: String,
-        },
-        date_of_birth: {
-            type: Date,
-        },
-        email: {
-            type: String,
-            required: true
-        },
+    username: {
+        type: String,
+        required: true
+    },
+    first_name: {
+        type: String,
+    },
+    last_name: {
+        type: String,
+    },
+    gender: {
+        type: String,
+    },
+    date_of_birth: {
+        type: Date,
+    },
+    email: {
+        type: String,
+        required: true
     },
 
     password: {
