@@ -26,6 +26,7 @@ authenticationRouter.post("/sign-up", async (req, res) => {
         }
         const email = req.body.email;
         const username = req.body.username;
+
         const emailExist = await User.findOne({email: email});
         if (emailExist) {
             res.status(400).send("Email already exists.");
