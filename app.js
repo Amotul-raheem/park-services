@@ -27,6 +27,10 @@ app.use("/api", passwordRouter)
 app.use("/api", bookingRouter);
 app.use("/api", parkSpotsRouter);
 
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+})
+
 //User Profile
 app.use("/api", userProfileRouter)
 
