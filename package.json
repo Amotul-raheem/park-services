@@ -30,9 +30,7 @@
     "n": "^8.0.2",
     "nodemailer": "^6.7.2",
     "nodemon": "^2.0.15",
-    "uuid": "^8.3.2"
-  },
-  "devDependencies": {
+    "uuid": "^8.3.2",
     "dotenv": "^14.3.2"
   }
 }
