@@ -1,4 +1,4 @@
-name: park services deployment
+name: Park Services Deployment
 on:
   [push]
 
